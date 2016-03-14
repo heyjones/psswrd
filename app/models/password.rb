@@ -1,5 +1,7 @@
 class Password < ActiveRecord::Base
 
+  obfuscate_id
+
   before_create :encrypt
 
   protected
