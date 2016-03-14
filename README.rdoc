@@ -1,9 +1,9 @@
-== psswrd
+= psswrd
 
 Share passwords securely. Entries are deleted from the database once they're viewed. There's also an optional Internal option that will limit permissions to the same public network.
 Things you may want to cover:
 
-= Todo
+== Todo
 
 * obfuscate ids
 
