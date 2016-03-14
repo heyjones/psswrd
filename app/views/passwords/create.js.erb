@@ -1,0 +1,4 @@
+$('#new_password').fadeOut('fast', function(){
+  $('#create_password .password').html('<%= polymorphic_url(@password) %>');
+  $('#create_password').fadeIn('fast');
+});

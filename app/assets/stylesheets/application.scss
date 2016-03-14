@@ -1,0 +1,67 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any styles
+* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+* file per style scope.
+*
+*= require_self
+*/
+@import 'bootstrap';
+
+html, body{
+  height: 100%;
+}
+
+.tallotron{
+  @extend .jumbotron;
+  align-items: center;
+  background: transparent;
+  display: flex;
+  height: 100%;
+  .container{
+    max-width: 600px;
+  }
+}
+
+#new_password{
+  #password_password{
+    border-right: none;
+    box-shadow: none;
+  }
+  .btn-default{
+    background-color: transparent!important;
+    border-left: none;
+    padding: 0;
+    &:hover, &:focus, &:active{
+      border-color: #ccc;
+      box-shadow: none;
+      outline: none;
+    }
+    label{
+      font-weight: normal;
+      margin: 0;
+      padding: 6px 12px;
+    }
+  }
+}
+
+#create_password{
+  margin-bottom: 0;
+}
+
+#show_password{
+  text-align: center;
+  .password{
+    filter: blur(2px);
+    transition: filter 0.25s ease;
+    &:hover{
+      filter: blur(0);
+    }
+  }
+}
