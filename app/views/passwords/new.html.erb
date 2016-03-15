@@ -3,12 +3,12 @@
 <div class="input-group">
   <%= f.text_field :password, placeholder: 'Password', required: true, class: 'form-control' %>
   <span class="input-group-btn">
-    <button type="button" class="btn btn-default">
+    <span class="btn btn-default">
       <%= f.label :ip do %>
       <%= f.check_box :ip, {}, request.remote_ip.to_s, '' %>
       Internal
       <% end %>
-    </button>
+    </span>
     <%= f.submit 'Share', class: 'btn btn-primary' %>
   </span>
 </div>
