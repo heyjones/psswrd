@@ -29,7 +29,7 @@ body{
   display: flex;
   height: 100%;
   .container{
-    max-width: 600px;
+    max-width: 960px;
   }
 }
 
@@ -40,7 +40,7 @@ body{
     box-shadow: none;
   }
   .btn-default{
-    background-color: transparent!important;
+    background-color: #fff;
     border-left: none;
     padding: 0;
     &:hover, &:focus, &:active{
@@ -70,6 +70,9 @@ body{
 
 #create_password{
   margin-bottom: 0;
+  .close{
+    margin-top: -2px;
+  }
 }
 
 #show_password{
