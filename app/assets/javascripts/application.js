@@ -17,6 +17,16 @@
 
 $(document).ready(function(){
 
+  $('#password_password').on('input', function(){
+    $('#new_password input[type="submit"]').prop('disabled', $(this).val().length == 0);
+  });
+
+  $('#new_password').on('ajax:before', function(){
+    if(!$('#new_password #password_password').val()){
+      return false;
+    }
+  });
+
   $('#create_password .close').click(function(){
     $('#create_password').fadeOut('fast', function(){
       $('#new_password')[0].reset();
