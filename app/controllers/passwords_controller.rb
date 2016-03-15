@@ -5,7 +5,7 @@ class PasswordsController < ApplicationController
   # GET /passwords/1
   def show
     if @password.ip? && @password.ip != request.remote_ip.to_s
-      redirect_to root_path
+      redirect_to :root
     else
       crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
       @password.password = crypt.decrypt_and_verify(@password.password)
@@ -33,7 +33,7 @@ class PasswordsController < ApplicationController
   def set_password
     @password = Password.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_url
+    redirect_to :root
   end
 
   # Only allow a trusted parameter "white list" through.
