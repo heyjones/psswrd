@@ -1,6 +1,6 @@
 class Password < ActiveRecord::Base
 
-  obfuscate_id
+  obfuscate_id spin: 9494131049
 
   before_create :encrypt
 
