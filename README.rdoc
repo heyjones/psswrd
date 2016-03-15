@@ -1,9 +1,8 @@
 = psswrd
 
-Share passwords securely. Entries are deleted from the database once they're viewed. There's also an optional Internal option that will limit permissions to the same public network.
+A minimalist version of PasswordPusher. Passwords are encrypted and expire immediately after being viewed. Use the "internal" option to limit access to your public IP address.
 
 == Todo
 
-* obfuscate ids
-
-* copy to clipboard
+* copy to clipboard link
+* chrome extension
