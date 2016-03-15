@@ -1,6 +1,6 @@
 = psswrd
 
-A minimalist version of PasswordPusher. Passwords are encrypted and expire immediately after being viewed. Use the "internal" option to limit access to your public IP address.
+A minimalist version of PasswordPusher. Passwords are encrypted and are immediately deleted from the database after being viewed or after 24 hours. Use the "internal" option to limit access to your public IP address.
 
 == Todo
 
