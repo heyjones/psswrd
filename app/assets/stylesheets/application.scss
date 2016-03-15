@@ -18,6 +18,10 @@ html, body{
   height: 100%;
 }
 
+body{
+  background-color: #fcfcfc;
+}
+
 .tallotron{
   @extend .jumbotron;
   align-items: center;
@@ -30,6 +34,7 @@ html, body{
 }
 
 #new_password{
+  box-shadow: 0 5px 10px #eee;
   #password_password{
     border-right: none;
     box-shadow: none;
@@ -56,7 +61,7 @@ html, body{
 }
 
 #show_password{
-  text-align: center;
+  box-shadow: 0 5px 10px #eee;
   .password{
     filter: blur(2px);
     transition: filter 0.25s ease;
