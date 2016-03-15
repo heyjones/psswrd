@@ -54,6 +54,15 @@ body{
       padding: 6px 12px;
     }
   }
+  &.partyparrot{
+    position: relative;
+    &:before{
+      content: image-url('partyparrot.gif');
+      left: 12px;
+      position: absolute;
+      top: -24px;
+    }
+  }
 }
 
 #create_password{

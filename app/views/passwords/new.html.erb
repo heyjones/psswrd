@@ -1,7 +1,7 @@
 <%= form_for(@password, remote: true) do |f| %>
 
 <div class="input-group">
-  <%= f.text_field :password, placeholder: 'Password', required: true, class: 'form-control' %>
+  <%= f.text_field :password, placeholder: 'Password', autocomplete: :off, required: true, class: 'form-control' %>
   <span class="input-group-btn">
     <span class="btn btn-default">
       <%= f.label :ip do %>

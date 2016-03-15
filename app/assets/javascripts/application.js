@@ -19,11 +19,10 @@ $(document).ready(function(){
 
   $('#password_password').on('input', function(){
     $('#new_password input[type="submit"]').prop('disabled', $(this).val().length == 0);
-  });
-
-  $('#new_password').on('ajax:before', function(){
-    if(!$('#new_password #password_password').val()){
-      return false;
+    if($('#password_password').val() == '(partyparrot)'){
+      $('#new_password').addClass('partyparrot');
+    }else{
+      $('#new_password').removeClass('partyparrot');
     }
   });
 
