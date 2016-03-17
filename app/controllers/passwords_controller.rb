@@ -9,9 +9,7 @@ class PasswordsController < ApplicationController
     else
       crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
       @password.password = crypt.decrypt_and_verify(@password.password)
-      if password_params[:token] != 'Z5K7VKR2ThrTqYhi5JYmTkGl'
-        @password.destroy
-      end
+      @password.destroy
     end
   end
 
@@ -40,7 +38,7 @@ class PasswordsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def password_params
-    params.require(:password).permit(:password, :ip, :token)
+    params.require(:password).permit(:password, :ip)
   end
 
 end
