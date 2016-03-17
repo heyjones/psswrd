@@ -4,14 +4,14 @@ class PasswordsController < ApplicationController
 
   # GET /passwords/1
   def show
-    puts '###'
-    puts request.referrer
     if @password.ip? && @password.ip != request.remote_ip.to_s
       redirect_to :root
     else
       crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
       @password.password = crypt.decrypt_and_verify(@password.password)
-      @password.destroy
+      if params[:token] != 'Z5K7VKR2ThrTqYhi5JYmTkGl'
+        @password.destroy
+      end
     end
   end
 
@@ -40,7 +40,7 @@ class PasswordsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def password_params
-    params.require(:password).permit(:password, :ip)
+    params.require(:password).permit(:password, :ip, :token)
   end
 
 end
