@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   resources :passwords, path: '', only: [:new, :create, :show]
 
+  namespace :api do
+    resources :passwords, only: [:create, :show]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
