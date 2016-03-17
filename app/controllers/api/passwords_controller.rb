@@ -14,7 +14,7 @@ class Api::PasswordsController < Api::BaseController
   end
 
   def create
-    @password = Password.new(password_params)
+    @password = Password.new(password: password_params[:text])
     if @password.save
       render text: polymorphic_url(@password)
     end
@@ -30,7 +30,7 @@ class Api::PasswordsController < Api::BaseController
 
   # Only allow a trusted parameter "white list" through.
   def password_params
-    params.permit(:password, :ip)
+    params.permit(:text, :ip)
   end
 
 end

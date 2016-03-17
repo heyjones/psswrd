@@ -6,7 +6,7 @@ A minimalist version of PasswordPusher. Passwords are encrypted and are immediat
 
 What minimalist web application would be complete without an equally featureless API?
 
-curl --data "password=ABC123" https://psswrd.herokuapp.com/api/passwords
+curl --data "text=ABC123" https://psswrd.herokuapp.com/api/passwords
 
 === Todo
 
