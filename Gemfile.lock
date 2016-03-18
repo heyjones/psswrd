@@ -59,6 +59,9 @@ GEM
     execjs (2.6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
@@ -72,6 +75,7 @@ GEM
     mime-types (2.99.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    multi_xml (0.5.5)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     obfuscate_id (0.2.0)
@@ -146,6 +150,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
   byebug
+  httparty
   jquery-rails
   obfuscate_id
   pg

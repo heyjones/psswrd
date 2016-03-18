@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :passwords, only: [:create, :show]
+    post 'slack' => 'api/passwords#slack'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

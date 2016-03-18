@@ -7,16 +7,35 @@ class Api::PasswordsController < Api::BaseController
       render text: ''
     else
       crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
-      @password.password = crypt.decrypt_and_verify(@password.password)
-      render text: @password.password
+      password = crypt.decrypt_and_verify(@password.password)
       @password.destroy
+      render text: password
     end
   end
 
   def create
-    @password = Password.new(password: password_params[:text])
+    @password = Password.new(password_params)
     if @password.save
       render text: polymorphic_url(@password)
+    end
+  end
+
+  def slack
+    #token: xoxp-2154618331-27519925504-27774176883-abff2f9fc1
+    @password = Password.new(password: slack_params[:text])
+    if @password.save
+      HTTParty.post(
+        'https://slack.com/api/chat.postMessage',
+        headers:{
+          'Content-Type' => 'application/json'
+        },
+        body: {
+          token: slack_params[:token],
+          channel: slack_params[:channel],
+          text: polymorphic_url(@password),
+          unfurl_links: false
+        }
+      )
     end
   end
 
@@ -30,7 +49,11 @@ class Api::PasswordsController < Api::BaseController
 
   # Only allow a trusted parameter "white list" through.
   def password_params
-    params.permit(:text, :ip)
+    params.permit(:password, :ip)
+  end
+
+  def slack_params
+    params.permit(:token, :team_id, :team_domain, :channel_id, :channel_name, :user_id, :user_name, :command, :text, :response_url)
   end
 
 end

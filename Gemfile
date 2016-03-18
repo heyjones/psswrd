@@ -22,3 +22,4 @@ group :production do
 end
 
 gem 'obfuscate_id'
+gem 'httparty'
