@@ -3,6 +3,7 @@ class Api::PasswordsController < Api::BaseController
   before_action :set_password, only: [:show]
 
   def show
+    puts request.referrer
     if @password.ip? && @password.ip != request.remote_ip.to_s
       render text: ''
     else
@@ -24,12 +25,12 @@ class Api::PasswordsController < Api::BaseController
     @password = Password.new(password: slack_params[:text])
     if @password.save
       HTTParty.post(
-        slack_params[:response_url],
+        'https://slack.com/api/chat.postMessage',
         headers:{
           'Content-Type' => 'application/json'
         },
         body: {
-          token: slack_params[:token],
+          token: Rails.application.secrets.slack_api_token,
           channel: slack_params[:channel],
           text: polymorphic_url(@password),
           unfurl_links: false
