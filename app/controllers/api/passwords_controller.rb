@@ -23,14 +23,15 @@ class Api::PasswordsController < Api::BaseController
   def slack
     @password = Password.new(password: slack_params[:text])
     if @password.save
-      params = {
-        token: Rails.application.secrets.slack_api_token,
-        channel: slack_params[:channel],
-        text: polymorphic_url(@password),
-        username: 'psswrd',
-        unfurl_links: 'false'
-      }
-      response = HTTParty.get('https://slack.com/api/chat.postMessage?#{params.to_query}')
+      response = HTTParty.get('https://slack.com/api/chat.postMessage?token=xoxb-27864497237-k77Gd9hXcIhhM9uYjBdtkQ17&channel=D0TEWPDUL&text=%3Chttp://heyjones.com%3E&unfurl_links=false&username=psswrd')
+      # params = {
+      #   token: Rails.application.secrets.slack_api_token,
+      #   channel: slack_params[:channel],
+      #   text: polymorphic_url(@password),
+      #   username: 'psswrd',
+      #   unfurl_links: 'false'
+      # }
+      # response = HTTParty.get('https://slack.com/api/chat.postMessage?#{params.to_query}')
       render text: response.code
     end
   end
