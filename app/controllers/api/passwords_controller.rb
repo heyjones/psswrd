@@ -21,9 +21,9 @@ class Api::PasswordsController < Api::BaseController
   end
 
   def slack
+    puts slack_params
     @password = Password.new(password: slack_params[:text])
     if @password.save
-      puts @password
       params = {
         token: Rails.application.secrets.slack_api_token,
         channel: slack_params[:channel],
