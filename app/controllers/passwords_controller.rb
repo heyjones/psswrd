@@ -9,9 +9,7 @@ class PasswordsController < ApplicationController
     else
       crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
       @password.password = crypt.decrypt_and_verify(@password.password)
-
       @password.destroy
-
     end
   end
 
