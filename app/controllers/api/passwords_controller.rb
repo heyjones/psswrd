@@ -21,12 +21,11 @@ class Api::PasswordsController < Api::BaseController
   end
 
   def slack
-    puts slack_params
     @password = Password.new(password: slack_params[:text])
     if @password.save
       params = {
-        token: Rails.application.secrets.slack_api_token,
-        channel: slack_params[:channel],
+        token: 'xoxb-27864497237-k77Gd9hXcIhhM9uYjBdtkQ17',#Rails.application.secrets.slack_api_token,
+        channel: 'D0TEWPDUL',#slack_params[:channel],
         text: polymorphic_url(@password),
         username: psswrd,
         unfurl_links: false
