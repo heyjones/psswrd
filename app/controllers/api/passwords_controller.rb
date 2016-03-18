@@ -21,6 +21,7 @@ class Api::PasswordsController < Api::BaseController
   end
 
   def slack
+    puts slack_params
     @password = Password.new(password: slack_params[:text])
     if @password.save
       HTTParty.post(
