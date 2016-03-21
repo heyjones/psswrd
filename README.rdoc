@@ -8,6 +8,14 @@ What minimalist web application would be complete without an equally featureless
 
 curl --data "text=ABC123" https://psswrd.herokuapp.com/api/passwords
 
+== Slack Itegration
+
+You can generate a URL by using the following Slack command:
+
+/psswrd ThisIsThePasswordThatIWantToShare
+
+Slackbot will return a message with the generated URL in the same channel you ran the command, so don't use this in a channel with multiple users.
+
 === Todo
 
 * copy to clipboard link
