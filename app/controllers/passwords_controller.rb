@@ -4,7 +4,7 @@ class PasswordsController < ApplicationController
 
   # GET /passwords/1
   def show
-    debug request
+    logger.debug request
     if @password.ip? && @password.ip != request.remote_ip.to_s
       redirect_to :root
     else
