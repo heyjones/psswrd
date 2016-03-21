@@ -25,12 +25,12 @@ class Api::PasswordsController < Api::BaseController
     if @password.save
       #response = HTTParty.get('https://slack.com/api/chat.postMessage?token=xoxb-27864497237-k77Gd9hXcIhhM9uYjBdtkQ17&channel=D0TEWPDUL&username=psswrd&icon_url=https://dl.dropboxusercontent.com/u/3586034/psswrd.png&text=https://psswrd.herokuapp.com/&unfurl_links=false&unfurl_media=false')
       request = 'https://slack.com/api/chat.postMessage?token=' + Rails.application.secrets.slack_api_token + '&channel=' + slack_params[:channel] + '&text=' + polymorphic_url(@password) + '&username=psswrd&icon_url=' + image_url('favicon.png') + '&unfurl_links=false&unfurl_media=false'
-      Rails.logger.debug request
-      response = HTTParty.get(request)
-      Rails.logger.debug response
+      render text: request
+      #response = HTTParty.get(request)
+      #Rails.logger.debug response
       #response = HTTParty.get('https://slack.com/api/chat.postMessage?token=' + Rails.application.secrets.slack_api_token + '&channel=' + slack_params[:channel] + '&text=' + polymorphic_url(@password) + '&unfurl_links=false&unfurl_media=false')
       #render text: response.code
-      head 200, content_type: 'text/html'
+      #head 200, content_type: 'text/html'
     end
   end
 
