@@ -3,6 +3,7 @@ class Api::PasswordsController < Api::BaseController
   before_action :set_password, only: [:show]
 
   def show
+    puts request.referrer
     if @password.ip? && @password.ip != request.remote_ip.to_s
       render text: ''
     else
