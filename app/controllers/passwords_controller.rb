@@ -4,13 +4,16 @@ class PasswordsController < ApplicationController
 
   # GET /passwords/1
   def show
-    logger.debug request
-    if @password.ip? && @password.ip != request.remote_ip.to_s
-      redirect_to :root
+    if request.user_agent == 'Slackbot-LinkExpanding 1.0 (+https://api.slack.com/robots)'
+      head 200, content_type: 'text/html'
     else
-      crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
-      @password.password = crypt.decrypt_and_verify(@password.password)
-      @password.destroy
+      if @password.ip? && @password.ip != request.remote_ip.to_s
+        redirect_to :root
+      else
+        crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
+        @password.password = crypt.decrypt_and_verify(@password.password)
+        @password.destroy
+      end
     end
   end
 
