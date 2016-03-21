@@ -30,6 +30,7 @@ class Api::PasswordsController < Api::BaseController
       username = 'psswrd'
       icon_url = image_url('favicon.png')
       request = 'https://slack.com/api/chat.postMessage?token=#{token}&channel=#{channel}&text=#{text}&username=#{username}&icon_url=#{icon_url}&unfurl_links=false&unfurl_media=false'
+      logger.info(request)
       render text: request
       #response = HTTParty.get(request)
       #Rails.logger.debug response
