@@ -81,7 +81,9 @@ body{
   .password{
     filter: blur(2px);
     transition: filter 0.25s ease;
-    &:hover{
+  }
+  &:hover{
+    .password{
       filter: blur(0);
     }
   }
